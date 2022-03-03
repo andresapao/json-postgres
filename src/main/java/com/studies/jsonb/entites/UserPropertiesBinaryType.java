@@ -7,9 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -17,22 +17,24 @@ import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
 import org.hibernate.annotations.TypeDefs;
 
-import com.vladmihalcea.hibernate.type.json.JsonType;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
 
-@TypeDefs({
-@TypeDef(name = "json", typeClass = JsonType.class)
-})
-@Builder
 @Getter
-@Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserProperties {
+@Entity
+@Table(name = "user_properties")
+@TypeDefs({
+		@TypeDef(name = "jsonb", typeClass = JsonBinaryType.class),
+})
+public class UserPropertiesBinaryType {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private UUID id;
 	private UUID userId;
-	@Type(type = "json")
+	@Type(type = "jsonb")
 	@Column(columnDefinition = "jsonb")
-	private com.studies.jsonb.entites.Properties properties;
+	private JsonNode properties;
+
 }

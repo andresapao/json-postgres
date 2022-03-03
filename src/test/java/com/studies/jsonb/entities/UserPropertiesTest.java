@@ -24,6 +24,11 @@ public class UserPropertiesTest {
 	@Autowired
 	private UserPropertiesRepository repository;
 
+	@Test
+	void shouldListAll() {
+		var saved = repository.findAll();
+		Assert.notNull(saved);
+	}
 
 	@Test
 	void shouldCreateAndFindUsingNativeQuery() {
