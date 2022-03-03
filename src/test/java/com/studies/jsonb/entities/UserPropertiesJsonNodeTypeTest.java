@@ -16,7 +16,7 @@ import com.studies.jsonb.repositories.UserPropertiesBinaryTypeRepository;
 )
 @DataJpaTest
 
-public class UserPropertiesBinaryTypeTest {
+public class UserPropertiesJsonNodeTypeTest {
 	@Autowired
 	private UserPropertiesBinaryTypeRepository repository;
 

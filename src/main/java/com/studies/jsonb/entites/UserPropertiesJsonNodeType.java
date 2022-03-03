@@ -28,7 +28,7 @@ import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
 @TypeDefs({
 		@TypeDef(name = "jsonb", typeClass = JsonBinaryType.class),
 })
-public class UserPropertiesBinaryType {
+public class UserPropertiesJsonNodeType {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private UUID id;
